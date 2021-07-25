@@ -1,0 +1,228 @@
+#include "main_window.h"
+
+
+Main_Window::Main_Window(string name,QWidget *parent)
+  : QMainWindow(parent)
+{
+
+
+
+  this->setWindowTitle(name.c_str());
+  this->setGeometry(50,50,1200,800);
+
+  try{
+    ifstream readfile;
+    readfile.open("LEVEL_USER.bin", ios::binary);
+
+    if(!readfile) throw (Tangram_Exception)OPEN_FILE;
+    else{
+
+
+      string name;
+      int index_currentLevel;
+      readfile.seekg(6);
+
+      readfile >> name;
+
+      long actual_cursor = readfile.tellg();
+      readfile.seekg(actual_cursor+3);
+      readfile >> index_currentLevel;
+
+      this->userName = name;
+      this->index_currentLevel = index_currentLevel;
+
+
+      readfile.close();
+    }
+
+
+  }catch(Tangram_Exception& excep){
+    if(excep == 0){
+        cout << "Partida no encontrada, se creará nuevo archivo" << endl;
+        ofstream new_game("LEVEL_USER.bin", ios::binary);
+
+        new_game << "User_1 Sandra = " << 1 << endl;
+
+        new_game.close();
+      }
+  }
+
+
+
+
+  arch_mainpage();
+  arch_level();
+
+  stack->addWidget(&main_page);
+  stack->addWidget(&level);
+  stack->setCurrentWidget(&main_page);
+
+
+  this->setCentralWidget(stack);
+
+
+  //Central Widget
+
+
+
+  /*
+   QGraphicsScene *scene = new QGraphicsScene();
+
+   QGraphicsView *view = new QGraphicsView();
+
+   scene->setBackgroundBrush(Qt::white);
+
+   view->setScene(scene);
+
+   shape *my_Rect = new rect_t(QVector2D(0,0), 45.0f, 10.0f, TANGRAM_ORANGE, 1.0f);
+
+
+   scene->addItem(my_Rect);
+   */
+
+   /*QOpenGLWidget *gl = new QOpenGLWidget();
+   QSurfaceFormat surface;
+   surface.setSamples(3);
+   gl->setFormat(surface);
+   view->setViewport(gl);*/
+
+
+}
+
+Main_Window::~Main_Window()
+{
+}
+
+//CreatePages
+
+void Main_Window::arch_mainpage()
+{
+
+  static QHBoxLayout hbox;
+
+
+  QLabel* main_label = new QLabel("Tangram");
+
+  main_label->setFont(QFont("ADAM.CG PRO", 50, 10));
+
+  hbox.addWidget(main_label,0,Qt::AlignHCenter);
+
+  QPushButton *push = new QPushButton("Press Me!");
+  hbox.addWidget(push,0);
+
+  connect(push, SIGNAL(clicked()), this, SLOT(Show_Levels()));
+
+  this->main_page.setStyleSheet("background-color: white;");
+  this->main_page.setLayout(&hbox);
+}
+
+void Main_Window::arch_level(/*Numero de nivel*/)
+{
+  static QVBoxLayout hbox_l(this);
+
+  //Buscar archivo con datos de nivel, y lo crea
+
+  //level_class* my_level = new level_class();
+
+  QGraphicsScene *scene = new QGraphicsScene();
+  //scene = my_level->getScene();
+
+  //level_class*  my_level = new level_class();
+  //QGraphicsScene* scene = my_level->get_Scene();
+
+  //scene->setBackgroundBrush(QPixmap("5.jpg"));
+
+  QGraphicsView *view = new QGraphicsView();
+
+
+  scene->setSceneRect(0,0,100,100);
+
+  view->setSceneRect(scene->sceneRect());
+  view->setScene(scene);
+
+
+  view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  view->setResizeAnchor(QGraphicsView::AnchorViewCenter);
+
+
+
+  /*
+  shape *my_Rect = new rect_t(QVector2D(-200,200), 45.0f, 10.0f, TANGRAM_ORANGE, false,1.0f);
+  shape *my_Rect2 = new rect_t(QVector2D(200,200), 45.0f, 10.0f, Qt::blue, true,1.0f);
+
+  triangle *triangulo = new triangle(QVector2D(200,-200), 0.0f, 10.0f, Qt::yellow, false,1.0f, triangle::RECTANGLE);
+  shape *my_Rect3 = new rect_t(QVector2D(200,-200), 0.0f, 10.0f, Qt::gray, true,1.0f);
+  triangle *static_triangulo = new triangle(QVector2D(-200,-200), 90.0f, 9.0f, Qt::green, true,1.0f, triangle::EQUILATERAL);
+
+  static_triangulo->setZValue(-1);
+  my_Rect2->setZValue(-1);
+  my_Rect3->setZValue(-1);
+  //scene->addEllipse(0,0,300,300,QPen(Qt::cyan), QBrush(Qt::cyan));
+
+
+  scene->addItem(triangulo);
+  scene->addItem(static_triangulo);
+  scene->addItem(my_Rect);
+  scene->addItem(my_Rect2);
+  scene->addItem(my_Rect3);*/
+  triangle *triangulo = new triangle();
+  scene->addItem(triangulo);
+  hbox_l.addWidget(view, 3);
+
+  QPushButton *push1 = new QPushButton("Come back to Menu!");
+
+
+
+
+  hbox_l.addWidget(push1,1);
+
+  connect(push1, SIGNAL(clicked()), this, SLOT(Show_MainPage()));
+
+
+
+  this->level.setLayout(&hbox_l);
+
+
+}
+
+int Main_Window::loadLevels()
+{
+  int loaded_levels = 0;
+
+
+
+
+
+
+  return loaded_levels;
+}
+
+
+
+//Emit Funcs
+
+void Main_Window::emit_numberlevel() const
+{
+
+}
+
+//Signals
+
+
+//Slots
+void Main_Window::Show_MainPage()
+{
+  this->stack->setCurrentWidget(&main_page);
+
+
+}
+
+
+
+void Main_Window::Show_Levels()
+{
+  this->stack->setCurrentWidget(&level);
+}
+
+

@@ -1,0 +1,10 @@
+release/rect_t.o
+release/shape.o
+release/trapezoid.o
+release/triangle.o
+release/level_class.o
+release/main.o
+release/main_window.o
+release/qrc_resources_file.o
+release/moc_level_class.o
+release/moc_main_window.o

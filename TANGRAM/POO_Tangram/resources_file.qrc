@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>lock.png</file>
+        <file>assets/images/gato.jpg</file>
+    </qresource>
+</RCC>

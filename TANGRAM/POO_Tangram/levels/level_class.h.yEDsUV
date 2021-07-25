@@ -1,0 +1,41 @@
+
+#include "QObject"
+#include "QtWidgets"
+
+#include "./Figure_Clases/shape.h"
+
+
+#ifndef LEVEL_CLASS_H
+#define LEVEL_CLASS_H
+
+/*
+class level_class
+{
+
+  private:
+    int number_figures;
+    shape** figures;
+
+    int index;
+    QGraphicsScene* level_scene;
+
+
+  public:
+    level_class();
+    level_class(int number_figures, int index,shape** array_figures,
+                  QGraphicsScene* level_scene);
+
+
+    //void writeLevel();
+    //static level_class readLevel(int);
+
+    int get_NumberFigures() const;
+    int get_Index() const;
+    //shape** get_figures() const;
+
+    friend ostream& operator<<(ostream& os, level_class level);
+
+
+};
+*/
+#endif // LEVEL_CLASS_H

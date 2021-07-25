@@ -1,0 +1,77 @@
+{
+    "figures": [
+        {
+            "angle_rot": 315,
+            "edge": 2,
+            "pos": [
+                816,
+                232
+            ],
+            "scale": 20,
+            "type": "TRIANGLE"
+        },
+        {
+            "angle_rot": 315,
+            "edge": 2,
+            "pos": [
+                819,
+                375
+            ],
+            "scale": 20,
+            "type": "TRIANGLE"
+        },
+        {
+            "angle_rot": 270,
+            "edge": 2,
+            "pos": [
+                618,
+                326
+            ],
+            "scale": 15,
+            "type": "TRIANGLE"
+        },
+        {
+            "angle_rot": 225,
+            "edge": 2,
+            "pos": [
+                722,
+                353
+            ],
+            "scale": 10,
+            "type": "TRIANGLE"
+        },
+        {
+            "angle_rot": 135,
+            "edge": 2,
+            "pos": [
+                1007,
+                412
+            ],
+            "scale": 10,
+            "type": "TRIANGLE"
+        },
+        {
+            "angle_rot": 180,
+            "angle_slope": 20,
+            "edge": 2,
+            "pos": [
+                830,
+                158
+            ],
+            "scale": 15,
+            "type": "TRAPEZOID"
+        },
+        {
+            "angle_rot": 90,
+            "edge": 2,
+            "pos": [
+                866,
+                232
+            ],
+            "scale": 10,
+            "type": "RECTANGLE"
+        }
+    ],
+    "number_figures": 7,
+    "number_level": 8
+}
