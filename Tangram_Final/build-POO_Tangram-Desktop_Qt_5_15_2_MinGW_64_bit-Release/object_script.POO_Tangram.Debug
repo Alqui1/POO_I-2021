@@ -1,0 +1,10 @@
+debug/rect_t.o
+debug/shape.o
+debug/trapezoid.o
+debug/triangle.o
+debug/level_class.o
+debug/main.o
+debug/main_window.o
+debug/qrc_resources_file.o
+debug/moc_level_class.o
+debug/moc_main_window.o

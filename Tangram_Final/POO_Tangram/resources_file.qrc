@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>lock.png</file>
+        <file>tangram.png</file>
+        <file>corona.png</file>
+        <file>passed.wav</file>
+    </qresource>
+</RCC>
